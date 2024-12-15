@@ -1,3 +1,4 @@
+import RecentGamesContainer from "@/components/RecentGamesContainer";
 import { Construction } from "lucide-react";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
                 <span className="text-3xl">Under Construction</span>
             </div>
             <div>I&apos;m working hard to finish this webapp 😁</div>
+            <RecentGamesContainer />
         </main>
     );
 }

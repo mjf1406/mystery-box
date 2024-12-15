@@ -1,5 +1,5 @@
 export const Database = {
     name: "mystery-box-db",
-    version: 1,
+    version: 2,
     games: "games",
   };
