@@ -1,5 +1,4 @@
 import RecentGamesContainer from "@/components/RecentGamesContainer";
-import { Construction } from "lucide-react";
 
 export default function Home() {
     return (

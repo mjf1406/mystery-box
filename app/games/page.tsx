@@ -110,7 +110,7 @@ const GamesTablePage = () => {
         } catch (err) {
             toast({
                 title: "Error",
-                description: "Failed to delete game",
+                description: `Failed to delete game: ${err}`,
                 variant: "destructive",
             });
         } finally {
