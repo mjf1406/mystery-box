@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useIndexedDB } from "@/lib/hooks/useIndexedDb";
@@ -137,7 +135,10 @@ const GamesTablePage = () => {
     return (
         <div className="p-6 space-y-6">
             <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold">Games</h1>
+                <h1 className="text-3xl font-bold">Your Games</h1>
+                <Button onClick={() => router.push("/game/new")}>
+                    Create New Game
+                </Button>
             </div>
 
             <div className="rounded-md border">
@@ -187,11 +188,9 @@ const GamesTablePage = () => {
                                         ).toLocaleDateString()}
                                     </TableCell>
                                     <TableCell>
-                                        {game.lastPlayed
-                                            ? new Date(
-                                                  game.lastPlayed
-                                              ).toLocaleString()
-                                            : "Never"}
+                                        {new Date(
+                                            game.lastPlayed
+                                        ).toLocaleDateString()}
                                     </TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-2">
@@ -254,12 +253,12 @@ const GamesTablePage = () => {
                     <AlertDialogHeader>
                         <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone! This will permanently
+                            This action cannot be undone. This will permanently
                             delete{" "}
                             <span className="font-semibold">
                                 {gameToDelete?.name}
                             </span>{" "}
-                            and all of its data. Are you absolutely sure?
+                            and all of its data.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

@@ -5,6 +5,12 @@ export interface Game {
     description: string;
     createdAt: string;
     lastPlayed: string;
+    questions: Question[]
+}
+
+export interface Question {
+    question: string;
+    answer: string;
 }
 
 export interface DatabaseSchema {

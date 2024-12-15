@@ -5,6 +5,14 @@ import { useIndexedDB } from "@/lib/hooks/useIndexedDb";
 import { Game } from "@/lib/schemas/databaseSchema";
 import { Database } from "@/lib/constants";
 import RecentGamesTable from "./RecentGamesTable";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Loader2, Gamepad2 } from "lucide-react";
 
 const RecentGamesContainer = () => {
     const [games, setGames] = useState<Game[]>([]);
@@ -40,23 +48,42 @@ const RecentGamesContainer = () => {
         fetchGames();
     }, [getAllValue, isDBConnecting]);
 
-    if (loading || isDBConnecting) {
-        return (
-            <div className="flex items-center justify-center h-32">
-                <p className="text-gray-500">Loading games...</p>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="flex items-center justify-center h-32">
-                <p className="text-red-500">{error}</p>
-            </div>
-        );
-    }
-
-    return <RecentGamesTable games={games} />;
+    return (
+        <Card>
+            <CardHeader>
+                <div className="flex items-center space-x-2">
+                    <Gamepad2 className="h-8 w-8 text-primary" />
+                    <div>
+                        <CardTitle>Recent Games</CardTitle>
+                        <CardDescription>
+                            Your most recently created mystery box games
+                        </CardDescription>
+                    </div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                {loading || isDBConnecting ? (
+                    <div className="flex items-center justify-center h-32">
+                        <Loader2 className="h-6 w-6 animate-spin text-gray-500" />
+                    </div>
+                ) : error ? (
+                    <div className="flex items-center justify-center h-32">
+                        <p className="text-red-500 flex items-center gap-2">
+                            <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
+                            {error}
+                        </p>
+                    </div>
+                ) : games.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-32 text-center">
+                        <Gamepad2 className="h-12 w-12 text-gray-400 mb-2" />
+                        <p className="text-gray-500">No games created yet</p>
+                    </div>
+                ) : (
+                    <RecentGamesTable games={games} />
+                )}
+            </CardContent>
+        </Card>
+    );
 };
 
 export default RecentGamesContainer;

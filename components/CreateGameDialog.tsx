@@ -49,6 +49,7 @@ const CreateGameDialog: React.FC = () => {
                 description: data.description,
                 createdAt: new Date().toISOString(),
                 lastPlayed: null,
+                questions: [],
             };
 
             // Insert the game into IndexedDB

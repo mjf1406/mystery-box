@@ -8,7 +8,7 @@ const Header = () => {
     const links = [
         {
             href: "/games",
-            label: "My Games",
+            label: "Games",
             icon: <Gamepad2 className="h-4 w-4" />,
         },
     ];
@@ -20,7 +20,7 @@ const Header = () => {
                     href={"/"}
                     className="flex gap-2 justify-center items-center"
                 >
-                    <Gift size={48} /> Mystery Box
+                    <Gift size={48} /> Mystery Box Game
                 </Link>
             </h1>
             <nav className="flex justify-center items-center">
@@ -28,8 +28,6 @@ const Header = () => {
                     <Link
                         href={href}
                         key={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                     >
                         <Button
                             variant={"link"}
